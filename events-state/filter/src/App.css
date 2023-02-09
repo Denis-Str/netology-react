@@ -10,6 +10,12 @@ html {
   height: 100%;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .portfolio-component {
   padding: 16px;
 }
@@ -41,13 +47,6 @@ html {
   display: grid;
   grid-template-columns: repeat(3, minmax(100px, max-content));
   grid-gap: 15px;
-}
-
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
 }
 
 .image {

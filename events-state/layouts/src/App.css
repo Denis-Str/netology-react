@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: muli, serif, sans-serif;
+  height: 100%;
+}
+
+h2 {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.store-component {
+  padding: 16px;
+  max-width: 1280px;
+  width: 95%;
+  margin: 50px auto;
+}
+
+.icon-switch-component {
+  margin-bottom: 16px;
+  text-align: right;
+}
+
+.cards-view-component {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
+  grid-gap: 16px;
+
+}
+
+.shop-card-component {
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px 50px;
+  background-color: #F3F2F2;
+  box-shadow: 0 5px 10px 2px rgba(95, 104, 111, 0.2);
+}
+
+.shop-card-component .color {
+  margin-bottom: 10px;
+}
+
+.shop-card-component .image,
+.shop-item-component .image {
+  width: 100%;
+  object-fit: contain;
+}
+
+.shop-card-component .image {
+  margin-bottom: 8px;
+}
+
+.shop-card-component img {
+  mix-blend-mode: multiply;
+}
+
+.shop-card-component .inner,
+.shop-item-component .inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: red;
+}
+
+.shop-card-component .button,
+.shop-item-component .button {
+  text-align: center;
+  padding: 6px;
+  border-radius: 16px;
+  border: 1px solid red;
+}
+
+.shop-item-component {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  height: 70px;
+  background-color: #F3F2F2;
+  padding: 0 20px;
+}
+
+.shop-item-component .picture .image {
+  height: 70px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.shop-item-component .name {
+  text-transform: uppercase;
+}
+
+.shop-item-component:not(:last-child) {
+  margin-bottom: 5px;
+}
+
