@@ -3,7 +3,6 @@ import React from "react";
 export default class ProjectList extends React.Component {
   render() {
     const Image = ({project: {img, category}}) => <img src={img} alt={category}/>;
-    // const Image = ({project: {img, category}}) => <div>{category}</div>;
 
     const projects = this.props.projects.map((project, index) =>
       <li className='image' key={index}>
