@@ -21,10 +21,12 @@ export default class Portfolio extends React.Component {
   }
 
   render() {
+    const filters = ["All", "Websites", "Flayers", "Business Cards"]
+
     return (
       <div className='portfolio-component'>
         <Toolbar
-          filters={["All", "Websites", "Flayers", "Business Cards"]}
+          filters={filters}
           selected={this.state.selected}
           onSelectFilter={filter => this.setSelected(filter)}
         />
