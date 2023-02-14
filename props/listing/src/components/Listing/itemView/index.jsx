@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import ItemViewModel from "../../../models/ItemView/ItemView";
+import PropTypes, {number, object, string} from 'prop-types';
 
 const getCurrency = currencyCode => {
   switch (currencyCode) {
@@ -27,10 +26,6 @@ const cropTitle = title => {
 
 
 export default function ItemView({item}) {
-  ItemView.propTypes = {
-    item: PropTypes.instanceOf(ItemViewModel)
-  }
-
   const {title, MainImage: {url_570xN}, price, quantity, currency_code} = item;
   const linkHref = `https://www.etsy.com/listing/292754135/${title}`;
 
@@ -48,4 +43,14 @@ export default function ItemView({item}) {
       </div>
     </div>
   )
+}
+
+ItemView.propTypes = {
+  item: PropTypes.shape({
+    title: string.isRequired,
+    MainImage: object.isRequired,
+    price: string.isRequired,
+    quantity: number.isRequired,
+    currency_code: string.isRequired
+  })
 }
