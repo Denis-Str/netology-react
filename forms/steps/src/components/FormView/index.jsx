@@ -2,15 +2,29 @@ import AppInput from "../common/AppInput";
 import {useState} from "react";
 
 const initialResult = {
-  date: '',
+  date: '__.__.__',
   distance: 0,
 }
+
 
 export default function FormView({onAddResult}) {
   const [result, setResult] = useState(initialResult)
 
-  const onChange = (type, value) => {
-    const newData = {[type]: value};
+  const inputs = [
+    {
+      label: 'Дата (ДД.ММ.ГГ)',
+      key: 'date',
+      dataInput: result.date,
+    },
+    {
+      label: 'Пройдено, км',
+      key: 'distance',
+      dataInput: result.distance,
+    }
+  ]
+
+  const onChange = (key, value) => {
+    const newData = {[key]: value};
     setResult(prevState => ({...prevState, ...newData}));
   }
   const sendResult = () => {
@@ -21,8 +35,7 @@ export default function FormView({onAddResult}) {
     <fieldset className="form-component">
       <legend>Учёт тренировок</legend>
       <div className="inner">
-        <AppInput label={'Дата (ДД.ММ.ГГ)'} dataType={'date'} onChange={onChange}/>
-        <AppInput label={'Пройдено, км'} dataType={'distance'} onChange={onChange}/>
+        { inputs.map(data => <AppInput key={data.key} data={data} onChange={onChange} />)}
         <div role="button" className="button" onClick={() => sendResult()}>ok</div>
       </div>
     </fieldset>

@@ -1,8 +1,8 @@
-export default function AppInput({label, dataType, onChange}) {
+export default function AppInput({data: {label, dataInput, key}, onChange}) {
   return (
     <label>
       <span>{label}</span>
-      <input type="text" onChange={event => onChange(dataType, event.target.value)} />
+      <input value={dataInput} onChange={event => onChange(key, event.target.value)}/>
     </label>
   )
 }
