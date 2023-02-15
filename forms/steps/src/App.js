@@ -12,21 +12,18 @@ export default function App() {
   let [results, setResults] = useState([]);
 
   const onChangeResult = (key, value) => {
-    const result = {[key]: value};
-    setResult(prevState => ({...prevState, ...result}));
+    if (key === 'distance') setResult(prevState => ({...prevState, ...{[key]: +value}}));
+    else setResult(prevState => ({...prevState, ...{[key]: value}}));
   }
-  const updateResults = () => {
-    const updateResults = results.map(item => {
-      if (item.date === result.date) return ({...item, distance: +item.distance + +result.distance});
-      return item;
-    });
-    setResults(updateResults);
+  const updateResults = index => {
+    results[index].distance += result.distance;
+    setResults(results);
     setResult(initialResult);
   }
 
   const onAddResult = () => {
-    const isResults = results.find(({date}) => date === result.date);
-    if (isResults) updateResults(isResults);
+    const isIndex = results.findIndex(({date}) => date === result.date);
+    if (isIndex !== -1) updateResults(isIndex);
     else {
       setResults(prevState => [...prevState, result]);
       setResult(initialResult);
