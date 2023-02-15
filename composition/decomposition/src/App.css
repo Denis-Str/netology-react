@@ -15,14 +15,3 @@ ul {
   padding: 0;
   list-style: none;
 }
-
-.cards {
-  padding: 16px;
-  column-gap: 1rem;
-  margin: 1rem 0 0;
-}
-
-.card {
-  width: 350px;
-  margin: 0 0 1rem;
-}

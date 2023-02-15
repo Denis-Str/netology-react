@@ -5,6 +5,7 @@ const cards = [
   {src: 'https://via.placeholder.com/200'},
   {src: ''},
   {src: 'https://via.placeholder.com/200'},
+  {src: ''},
 ]
 
 export default function App() {
