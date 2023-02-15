@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: muli, serif, sans-serif;
+  height: 100%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards {
+  padding: 16px;
+  column-gap: 1rem;
+  margin: 1rem 0 0;
+}
+
+.card {
+  width: 350px;
+  margin: 0 0 1rem;
+}
