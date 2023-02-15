@@ -16,7 +16,7 @@ const getQuantityStyle = quantity => {
   if (quantity <= 10) return `${baseStyle} level-low`;
   if (quantity > 10 && quantity <= 20) return `${baseStyle} level-medium`;
   if (quantity > 20) return `${baseStyle} level-high`;
-  return "item-quantity";
+  return baseStyle;
 }
 
 const cropTitle = title => {
