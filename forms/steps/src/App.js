@@ -3,7 +3,7 @@ import ResultsTable from "./components/ResultsTable";
 import {useState} from "react";
 
 const initialResult = {
-  date: '__.__.__',
+  date: "__.__.__",
   distance: 0,
 }
 
@@ -22,6 +22,8 @@ export default function App() {
   }
 
   const onAddResult = () => {
+    if (result.distance === 0 || result.date === "__.__.__") return;
+
     const isIndex = results.findIndex(({date}) => date === result.date);
     if (isIndex !== -1) updateResults(isIndex);
     else {
