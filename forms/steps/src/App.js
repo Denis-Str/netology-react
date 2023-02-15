@@ -3,19 +3,19 @@ import ResultsTable from "./components/ResultsTable";
 import {useState} from "react";
 
 export default function App() {
-  let [results, setResult] = useState([]);
+  let [results, setResults] = useState([]);
   const onAddResult = (result) => {
-    setResult(prevState => [...prevState, result]);
+    setResults(prevState => [...prevState, result]);
   }
   const editResult = ({date, distance}) => {
     const updateResults = results.map(item => {
       if (item.date === date) return {...item, distance: +item.distance + +distance};
       return item;
     })
-    setResult(updateResults);
+    setResults(updateResults);
   }
   const deleteResult = result => {
-    setResult(results.filter(({date}) => date !== result.date));
+    setResults(results.filter(({date}) => date !== result.date));
   }
   const onHandleClickResult = ({key, result}) => {
     if (key === 'edit') editResult(result)
