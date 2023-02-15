@@ -3,16 +3,23 @@ import ResultModel from "../../models/ResultModel";
 import Result from "./Result";
 
 export default function ResultsTable({results}) {
-  console.log(results)
-  // const resultsList = results.map((result, index) => <Result key={`result ${index}`} result={result} />)
+  let resultsList = <div>Добавьте результаты тренировок</div>
+  if (results.length > 0) {
+    resultsList = (
+      <ul className="results-list">
+        {results.map((result, index) => <Result key={`result ${index}`} result={result} />)}
+      </ul>
+    )
+  }
   return(
-    <ul className="results-table-component">
-      <li className="headline">
+    <div  className="results-table-component">
+      <div className="headline">
         <div>Дата (ДД.ММ.ГГ)</div>
         <div>Пройдено, км</div>
-      </li>
-      {/*{resultsList}*/}
-    </ul>
+        <div>Действия</div>
+      </div>
+      {resultsList}
+    </div>
   )
 }
 
