@@ -1,4 +1,4 @@
-export default function AppInput({data: {label, dataInput, key}, onChange}) {
+export default function AppInput({input: {label, dataInput, key}, onChange}) {
   return (
     <label>
       <span>{label}</span>
