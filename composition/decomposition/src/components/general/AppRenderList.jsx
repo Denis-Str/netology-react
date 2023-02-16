@@ -4,8 +4,8 @@
  *   @param list - массив данных
  */
 
-export default function AppRenderList({list}) {
+export default function AppRenderList({children}) {
   return (
-    <ul>{list}</ul>
+    <ul>{children}</ul>
   )
 }
