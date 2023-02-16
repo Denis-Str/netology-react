@@ -4,11 +4,15 @@
  */
 import AppRenderList from "../../../general/AppRenderList";
 import AppLink from "../../../general/AppLink";
+import AppIcon from "../../../general/AppIcon";
 
 export default function NewsView({news}) {
   return (
     <AppRenderList list={news}>
-      <AppLink href={'#'} title={'Новость 1'} />
+      <li>
+        <AppIcon />
+        <AppLink href={'#'} title={'Новость 1'} />
+      </li>
     </AppRenderList>
   )
 }
