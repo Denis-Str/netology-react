@@ -6,7 +6,6 @@ export default function App() {
   const [colorLegend, setColorLegend] = useState('#ffffff');
 
   const converterColor = color => {
-    console.log(color)
     if (color === null) {
       setColor('#DD3227');
       setColorLegend('#691B16')
@@ -17,13 +16,16 @@ export default function App() {
     }
   }
 
-  const legend = color === '#DD3227' ? 'Ошибка!' : color;
+  const legendText = color === '#DD3227' ? 'Ошибка!' : color;
+  const legendStyle = color === '#DD3227' ? {'color': '#ffffff'} : {'filter': 'invert(0.5)', 'color': color};
 
   return (
     <div className="wrap" style={{'backgroundColor': color}}>
       <div className="container">
         <ConverterColor converterColor={converterColor}/>
-        <div className="legend" style={{'backgroundColor': colorLegend}}>{legend}</div>
+        <div className="legend" style={{'backgroundColor': colorLegend, 'filter': 'invert(0.1)'}}>
+          <span style={legendStyle}>{legendText}</span>
+        </div>
       </div>
     </div>
   );
