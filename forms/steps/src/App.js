@@ -3,9 +3,11 @@ import ResultsTable from "./components/ResultsTable";
 import {useState} from "react";
 
 const initialResult = {
-  date: "__.__.__",
+  date: "",
   distance: 0,
 }
+
+const sortingByDate = (prevState, result) => [...prevState, result].sort((a,b) => new Date(b.date) - new Date(a.date))
 
 export default function App() {
   const [result, setResult] = useState(initialResult);
@@ -22,12 +24,12 @@ export default function App() {
   }
 
   const onAddResult = () => {
-    if (result.distance === 0 || result.date === "__.__.__") return;
+    if (result.distance === 0 || result.date === "") return;
 
     const isIndex = results.findIndex(({date}) => date === result.date);
     if (isIndex !== -1) updateResults(isIndex);
     else {
-      setResults(prevState => [...prevState, result]);
+      setResults(prevState => sortingByDate(prevState, result));
       setResult(initialResult);
     }
   }
