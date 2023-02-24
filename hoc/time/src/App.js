@@ -10,7 +10,6 @@ const content = diff => {
 }
 
 const DateTimePretty = ({children}) => {
-  console.log(children.props)
   const now = new Date;
   const diff = (now.getTime() - new Date(children.props.date).getTime()) / 60000;
 
