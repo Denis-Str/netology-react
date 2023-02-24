@@ -1,10 +1,22 @@
 import React, {useState} from 'react';
+import declensionWord from "./helpers/declensionWord";
 
+const content = diff => {
+  if (diff > 60 && diff < 300) return '12 минут назад';
+  if (diff < 300 && diff < 14400) return '5 часов назад';
+  const daysPassed = diff / 14400;
+  const word = declensionWord(Math.round(daysPassed), ["день", "дня", "дней"])
+  return `${Math.round(daysPassed)} ${word} назад`;
+}
 
-const DateTimePretty = Component => ({ ...props }) => {
-  // const [date, setDate] = useState(new Date);
-  console.log(props)
-  return <Component {...props} />
+const DateTimePretty = ({children}) => {
+  console.log(children.props)
+  const now = new Date;
+  const diff = (now.getTime() - new Date(children.props.date).getTime()) / 60000;
+
+  return (
+    <DateTime date={content(diff)}/>
+  )
 }
 
 function DateTime(props) {
@@ -18,15 +30,14 @@ function Video(props) {
     <div className="video">
       <iframe src={props.url} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
       <DateTimePretty>
-        <DateTime date={props.date} />
+        <DateTime date={props.date}/>
       </DateTimePretty>
-      {/*{DateTimePretty(<DateTime date={props.date} />)}*/}
     </div>
   )
 }
 
 function VideoList(props) {
-  return props.list.map(item => <Video key={item.url} url={item.url} date={item.date} />);
+  return props.list.map(item => <Video key={item.url} url={item.url} date={item.date}/>);
 }
 
 export default function App() {
@@ -58,6 +69,6 @@ export default function App() {
   ]);
 
   return (
-    <VideoList list={list} />
+    <VideoList list={list}/>
   );
 }
