@@ -1,3 +1,12 @@
+import List from "./components/List";
+import Details from "./components/Details";
+
 export default function App() {
-  return (<div>use-effect</div>);
+  const changeUser = id => console.log(id);
+  return (
+    <div className="wrap">
+      <List changeUser={changeUser} />
+      <Details />
+    </div>
+  );
 }
