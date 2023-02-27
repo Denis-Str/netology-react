@@ -11,7 +11,7 @@ export default function List({changeUser}) {
       const users = await response.json();
       setUsers([...users]);
     } catch (e) {
-      console.error('Ошибка получения списка пользователей');
+      console.error('Ошибка получения списка пользователей', e);
     } finally {
       setLoading(false);
     }

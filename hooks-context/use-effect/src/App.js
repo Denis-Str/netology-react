@@ -6,9 +6,13 @@ export default function App() {
   const [userID, setUserID] = useState(null);
   const [user, setUser] = useState({name: null});
   const fetchUser = async () => {
-    const response = await fetch(`${process.env.REACT_APP_URL}/${userID}.json`);
-    const user = await response.json();
-    setUser(user);
+    try {
+      const response = await fetch(`${process.env.REACT_APP_URL}/${userID}.json`);
+      const user = await response.json();
+      setUser(user);
+    } catch (e) {
+      console.error('Ошибка получения пользователя', e);
+    }
   }
   useEffect(() => {
     if (userID) fetchUser();
