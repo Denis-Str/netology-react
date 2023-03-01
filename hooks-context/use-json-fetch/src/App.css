@@ -15,3 +15,20 @@ ul {
   padding: 0;
   list-style: none;
 }
+
+.wrap {
+  padding: 16px;
+}
+
+.request-comp {
+  padding: 6px;
+  border-bottom: 1px solid black;
+}
+
+.request-comp:first-child {
+  border-top: 1px solid black;
+}
+
+._error {
+  color: red;
+}
