@@ -1,23 +1,18 @@
+import React from "react";
 import Wrapper from "../../hoc/Wrapper";
 import Video from "../Video/Video";
 import Article from "../Article/Article";
 
-export default function List(props) {
-  return props.list.map((item, index) => {
+export default function List({ list }) {
+  return list.map((item, index) => {
+    const VideoWrapper = Wrapper(Video, item);
+    const ArticleWrapper = Wrapper(Article, item);
+
     switch (item.type) {
       case 'video':
-        return (
-          <Wrapper key={index}>
-            <Video {...item} />
-          </Wrapper>
-        );
-
+        return (<VideoWrapper key={index} item={item}/>);
       case 'article':
-        return (
-          <Wrapper key={index}>
-            <Article {...item} />
-          </Wrapper>
-        );
+        return (<ArticleWrapper key={index} item={item}/>);
     }
   });
 }
