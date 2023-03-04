@@ -10,9 +10,9 @@ export default function List({ list }) {
 
     switch (item.type) {
       case 'video':
-        return (<VideoWrapper key={index} item={item}/>);
+        return (<VideoWrapper key={index} />);
       case 'article':
-        return (<ArticleWrapper key={index} item={item}/>);
+        return (<ArticleWrapper key={index} />);
     }
   });
 }

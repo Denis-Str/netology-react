@@ -1,6 +1,5 @@
 import React from "react";
-import DateTime from "../DateTime";
-import declensionWord from "../../../helpers/declensionWord";
+import declensionWord from "../helpers/declensionWord";
 
 const content = diff => {
   if (diff < 60) return '12 минут назад';
@@ -10,11 +9,13 @@ const content = diff => {
   return `${Math.round(daysPassed)} ${word} назад`;
 }
 
-export default function DateTimePretty({children})  {
+export default function DateTimePretty(Component, date)  {
   const now = new Date;
-  const diff = (now.getTime() - new Date(children.props.date).getTime()) / 60000;
+  const diff = (now.getTime() - new Date(date).getTime()) / 60000;
 
-  return (
-    <DateTime date={content(diff)}/>
-  )
+  return class extends React.Component {
+    render() {
+      return (<Component date={content(diff)}/>)
+    }
+  }
 }

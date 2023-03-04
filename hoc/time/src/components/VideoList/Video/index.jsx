@@ -1,13 +1,14 @@
-import DateTimePretty from "../DateTimePretty";
+import React from "react";
+import DateTimePretty from "../../../hoc/DateTimePretty";
 import DateTime from "../DateTime";
 
-export default function Video(props) {
+export default function Video({date, url}) {
+  const Wrapper = DateTimePretty(DateTime, date);
+
   return (
     <div className="video">
-      <iframe src={props.url} allow="autoplay; encrypted-media" allowFullScreen></iframe>
-      <DateTimePretty>
-        <DateTime date={props.date}/>
-      </DateTimePretty>
+      <iframe src={url} allow="autoplay; encrypted-media" allowFullScreen></iframe>
+      <Wrapper />
     </div>
   )
 }
