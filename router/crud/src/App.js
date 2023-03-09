@@ -1,7 +1,14 @@
+import {Routes, Route} from "react-router";
+import HomePage from "./pages/index"
+
 function App() {
   return (
-    <div className="container">
-      crud
+    <div className="app">
+      <div className="page">
+        <Routes>
+          <Route path="/" exact element={<HomePage/>}/>
+        </Routes>
+      </div>
     </div>
   )}
 
