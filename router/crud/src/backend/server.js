@@ -19,7 +19,14 @@ router.get('/posts', async (ctx, next) => {
 });
 
 router.post('/posts', async(ctx, next) => {
-    posts.push({comment: ctx.request.body, id: nextId++, created: Date.now()});
+    console.log( JSON.parse(ctx.request.body))
+    const { id,  comment} = JSON.parse(ctx.request.body);
+    if (id !== 0) {
+        posts = posts.map(o => o.id !== id ? o : {id: o.id, comment});
+        ctx.response.status = 204;
+        return;
+    }
+    posts.push({comment, id: nextId++, created: Date.now()});
     ctx.response.status = 204;
 });
 

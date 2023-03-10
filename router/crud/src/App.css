@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 * {
   box-sizing: border-box;
 }
@@ -16,20 +17,28 @@ ul {
   list-style: none;
 }
 
+a {
+  color: black;
+  text-decoration: unset;
+}
+
 .app {
   padding: 6px;
   background-color: gray;
   height: 100vh;
 }
 
-.new-post {
+._bg-common {
   background-color: white;
   padding: 6px;
   width: 100%;
+  border-radius: 6px;
+}
+
+.new-post {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  border-radius: 6px;
   margin-bottom: 16px;
 }
 
@@ -43,18 +52,24 @@ ul {
 }
 
 .create-post-comp {
-  background-color: white;
-  padding: 6px;
-  border-radius: 6px;
   display: flex;
   flex-direction: column;
 }
 
-.posts-comp {
-  background-color: white;
-  padding: 6px;
+.create-post-comp .heading {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   width: 100%;
+}
+
+.post-comp {
   border-radius: 6px;
+  cursor: pointer;
+}
+
+.post-comp:not(:last-child) {
+  margin-bottom: 16px;
 }
 
 .textarea {
@@ -84,4 +99,24 @@ ul {
   padding: 4px;
   background-color: blue;
   color: white;
+}
+
+.post-page-comp .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.post-page-comp .button {
+  padding: 4px;
+  text-align: center;
+  background-color: blue;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.post-page-comp .button:last-child {
+  margin-left: 6px;
+  background-color: red;
 }
