@@ -1,4 +1,4 @@
-import {Routes, Route} from "react-router";
+import {Routes, Route, useLocation} from "react-router";
 import HomePage from "./pages/index";
 import CreatePost from "./pages/CreatePost";
 import PostPage from "./pages/Post";
@@ -6,6 +6,8 @@ import {useEffect, useState} from "react";
 
 function App() {
   const [posts, serPosts] = useState([]);
+  let location = useLocation();
+
   const fetchPosts = async () => {
     try {
       const response = await fetch(`${process.env.REACT_APP_URL}/posts`, {method: 'GET'});
@@ -18,7 +20,7 @@ function App() {
 
   useEffect(() => {
     fetchPosts();
-  }, [posts.length]);
+  }, [location]);
 
   return (
     <div className="app">
@@ -27,7 +29,7 @@ function App() {
           <Route path="/" exact element={<HomePage posts={posts}/>}/>
           <Route path="posts">
             <Route path="new" exact element={<CreatePost/>}/>
-            <Route path=":postId" exact element={<PostPage posts={posts}/>}/>
+            <Route path=":postId" exact element={<PostPage posts={posts} fetchPosts={fetchPosts}/>}/>
           </Route>
         </Routes>
       </div>

@@ -1,5 +1,5 @@
 import {NavLink} from "react-router-dom";
-import PostList from "../components/PostList";
+import PostList from "../components/pages/HomePage/PostList";
 
 export default function HomePage({posts}) {
   return (

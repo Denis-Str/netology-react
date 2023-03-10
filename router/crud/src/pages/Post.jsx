@@ -1,10 +1,9 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Content from "../components/pages/Post/Content";
 import Edit from "../components/pages/Post/Edit";
 
-export default function PostPage({posts}) {
-  const [value, setValue] = useState('');
+export default function PostPage({posts, fetchPosts}) {
   const [isEdit, setIsEdit]= useState(false);
   let { postId } = useParams();
   const navigate = useNavigate();
@@ -25,6 +24,10 @@ export default function PostPage({posts}) {
     });
     setIsEdit(false);
   }
+
+  useEffect(() => {
+    fetchPosts();
+  }, [isEdit]);
 
   const closePage = () => {
     setIsEdit(false);
