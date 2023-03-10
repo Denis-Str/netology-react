@@ -1,5 +1,6 @@
 import {NavLink} from "react-router-dom";
 import {useState, useEffect} from "react";
+import PostList from "../components/PostList";
 
 export default function HomePage() {
   const [posts, serPosts] = useState([]);
@@ -17,8 +18,10 @@ export default function HomePage() {
   }, [posts.length === 0]);
   return (
     <div className="home-page-comp">
-      <NavLink to={"/posts/new"} className="new-post">Создать пост</NavLink>
-      <h3>HomePage</h3>
+      <div className="new-post">
+        <NavLink to={"/posts/new"} className="link">Создать пост</NavLink>
+      </div>
+      <PostList posts={posts} />
     </div>
   )
 }

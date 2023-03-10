@@ -19,15 +19,7 @@ router.get('/posts', async (ctx, next) => {
 });
 
 router.post('/posts', async(ctx, next) => {
-    const {id, content} = ctx.request.body;
-
-    if (id !== 0) {
-        posts = posts.map(o => o.id !== id ? o : {...o, content: content});
-        ctx.response.status = 204;
-        return;
-    }
-
-    posts.push({...ctx.request.body, id: nextId++, created: Date.now()});
+    posts.push({comment: ctx.request.body, id: nextId++, created: Date.now()});
     ctx.response.status = 204;
 });
 
