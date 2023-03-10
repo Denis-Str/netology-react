@@ -22,7 +22,7 @@ router.post('/posts', async(ctx, next) => {
     console.log( JSON.parse(ctx.request.body))
     const { id,  comment} = JSON.parse(ctx.request.body);
     if (id !== 0) {
-        posts = posts.map(o => o.id !== id ? o : {id: o.id, comment});
+        posts = posts.map(o => o.id !== id ? o : {...o, comment});
         ctx.response.status = 204;
         return;
     }

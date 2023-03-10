@@ -1,9 +1,13 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import {useState} from "react";
+import Content from "../components/pages/Post/Content";
+import Edit from "../components/pages/Post/Edit";
 
 export default function PostPage({posts}) {
+  const [value, setValue] = useState('');
+  const [isEdit, setIsEdit]= useState(false);
   let { postId } = useParams();
   const navigate = useNavigate();
-
 
   const deletePost = async () => {
     await fetch(`${process.env.REACT_APP_URL}/posts/${postId}`, {
@@ -12,19 +16,30 @@ export default function PostPage({posts}) {
     navigate("/");
   }
 
+  const savePost = async comment => {
+    const params = { id: +postId, comment:`${comment}` }
+    const body = JSON.stringify(params);
+    await fetch(`${process.env.REACT_APP_URL}/posts`, {
+      method: "POST",
+      body
+    });
+    setIsEdit(false);
+  }
+
+  const closePage = () => {
+    setIsEdit(false);
+  };
+
   if (posts.length) {
-    const {comment, created} = posts.find(({id}) => id === +postId);
-    const date = new Date(created);
+    const post = posts.find(({id}) => id === +postId);
 
     return (
       <div className="post-page-comp _bg-common">
-        <h3>{comment}</h3>
-        <h5>{date.toDateString()}</h5>
-        <div className="deliver" />
-        <div className="wrap">
-          <div role="button" className="button">Изменить</div>
-          <div role="button" className="button" onClick={() => deletePost()}>Удалить</div>
-        </div>
+        {
+          isEdit ?
+          <Edit comment={post.comment} editPost={savePost} closePage={closePage} /> :
+          <Content post={post} setIsEdit={setIsEdit} deletePost={deletePost} />
+        }
       </div>
     )
   }

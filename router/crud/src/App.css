@@ -56,7 +56,8 @@ a {
   flex-direction: column;
 }
 
-.create-post-comp .heading {
+.create-post-comp .heading,
+.edit-comp .heading {
   display: flex;
   align-items: center;
   justify-content: flex-end;
