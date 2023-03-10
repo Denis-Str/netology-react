@@ -2,7 +2,7 @@ import {useState} from "react";
 
 export default function Edit({comment, editPost, closePage}) {
   const [value, setValue] = useState(comment);
-  const handleChange = value => setValue(value);
+
   return (
     <div className="edit-comp">
       <div className="heading">

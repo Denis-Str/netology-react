@@ -35,6 +35,9 @@ export default function PostPage({posts}) {
 
     return (
       <div className="post-page-comp _bg-common">
+        <div className="heading">
+          <span className="material-icons" onClick={() => navigate("/")}>arrow_back</span>
+        </div>
         {
           isEdit ?
           <Edit comment={post.comment} editPost={savePost} closePage={closePage} /> :
