@@ -1,10 +1,11 @@
-import { deleteService, toggleIsEdit} from "../../../redux/services";
+import { deleteService, setEditingIndex, toggleIsEdit} from "../../../redux/services";
 import { useDispatch } from "react-redux";
 
-export default function Service({ service }) {
+export default function Service({ service, currentIndex }) {
   const dispatch = useDispatch();
   const saveChange = () => {
     dispatch(toggleIsEdit(true));
+    dispatch(setEditingIndex(currentIndex));
   }
   const handleDelete = () => dispatch(deleteService(service.name));
 

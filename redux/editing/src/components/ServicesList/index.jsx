@@ -7,7 +7,7 @@ export default function ServicesList() {
   return (
     <ul className="services-comp">
       {servicesList.map((service, index) =>
-        <Service key={`service-${index}`} service={service} />)}
+        <Service key={`service-${index}`} service={service} currentIndex={index} />)}
     </ul>
   )
 }

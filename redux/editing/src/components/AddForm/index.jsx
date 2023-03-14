@@ -1,21 +1,29 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addService, toggleIsEdit, isEdit } from "../../redux/services";
+import { services, addService, toggleIsEdit, isEdit, setEditingIndex, editingIndex } from "../../redux/services";
 
 export default function AddForm() {
   const initState = {name: "", price: ""};
   const edit = useSelector(isEdit);
+  const servicesList = useSelector(services);
+  const currentIndex = useSelector(editingIndex);
   const [service, setService] = useState(initState);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (edit) setService(servicesList[currentIndex]);
+  }, [edit])
 
   const updateService = (key, value) => setService({ ...service, [key]: value });
 
   const saveChange = () => {
-    dispatch(addService(service))
+    dispatch(addService(service));
+    dispatch(toggleIsEdit(false));
     setService(initState);
   }
   const cancelChange = () => {
     dispatch(toggleIsEdit(false));
+    dispatch(setEditingIndex(null));
     setService(initState);
   }
 
