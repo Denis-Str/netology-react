@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 export const servicesSlice = createSlice({
   name: 'services',
@@ -8,7 +8,13 @@ export const servicesSlice = createSlice({
   },
   reducers: {
     addService: (state, action) => {
-      state.services.push(action.payload)
+      const { payload } = action;
+      const currentItem = state.services.find(({ name }) => name === payload.name);
+      if (currentItem) return;
+      state.services.push(payload);
+    },
+    deleteService: (state, action) => {
+      state.services = state.services.filter(({name}) => name !== action.payload);
     },
     toggleIsEdit: (state, action) => {
       state.isEdit = action.payload;
@@ -16,7 +22,7 @@ export const servicesSlice = createSlice({
   },
 })
 
-export const { addService, toggleIsEdit } = servicesSlice.actions;
+export const { addService, deleteService, toggleIsEdit } = servicesSlice.actions;
 export const isEdit = ({ services }) => services.isEdit;
 export const services = ({ services }) => services.services;
 

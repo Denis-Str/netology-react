@@ -1,4 +1,4 @@
-import { toggleIsEdit} from "../../../redux/services";
+import { deleteService, toggleIsEdit} from "../../../redux/services";
 import { useDispatch } from "react-redux";
 
 export default function Service({ service }) {
@@ -6,7 +6,7 @@ export default function Service({ service }) {
   const saveChange = () => {
     dispatch(toggleIsEdit(true));
   }
-  const cancelChange = () => console.log(service.name);
+  const handleDelete = () => dispatch(deleteService(service.name));
 
   return (
     <li className="service-comp">
@@ -15,7 +15,7 @@ export default function Service({ service }) {
       <button type="button" onClick={() => saveChange()}>
         <span className="material-icons">edit</span>
       </button>
-      <button type="button" onClick={() => cancelChange()}>
+      <button type="button" onClick={() => handleDelete()}>
         <span className="material-icons">delete</span>
       </button>
     </li>
