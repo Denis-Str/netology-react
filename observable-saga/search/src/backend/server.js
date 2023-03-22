@@ -1,17 +1,13 @@
-import express from "express";
-import cors from "cors";
-import bodyParser from "body-parser";
+const http = require('http');
+const Koa = require('koa');
+const Router = require('koa-router');
+const cors = require('koa2-cors');
+const koaBody = require('koa-body');
 
-const app = express();
+const app = new Koa();
 
 app.use(cors());
-app.use(
-  bodyParser.json({
-    type(req) {
-      return true;
-    },
-  })
-);
+app.use(koaBody({json: true}));
 
 let nextId = 1;
 const skills = [
@@ -23,19 +19,20 @@ const skills = [
   { id: nextId++, name: "Redux Saga" },
 ];
 
+const router = new Router();
 let isEven = true;
-app.get("/api/search", async (req, res) => {
-  if (Math.random() > 0.75) {
-    return res.status(500).end();
-  }
-  const { q } = req.query;
-  return new Promise((resolve, reject) => {
-    setTimeout(
-      () => {
-        const data = skills.filter((o) =>
+
+router.get("/api/search", async (ctx) => {
+  if (Math.random() > 0.75) return ctx.response.status = 500;
+ // return ctx.response.status = 500;
+
+  const { q } = ctx.request.query;
+
+  return new Promise( (resolve) => {
+    setTimeout(() => {
+        ctx.response.body = skills.filter((o) =>
           o.name.toLowerCase().startsWith(q.toLowerCase())
         );
-        res.send(JSON.stringify(data));
         resolve();
       },
       isEven ? 1000 : 5 * 1000
@@ -44,5 +41,10 @@ app.get("/api/search", async (req, res) => {
   });
 });
 
-const port = process.env.PORT || 7070;
-app.listen(port, () => console.log(`The server is running on port ${port}.`));
+app.use(router.routes()).use(router.allowedMethods());
+
+const port = process.env.PORT || 7777;
+const server = http.createServer(app.callback());
+server.listen(port, () => {
+  console.log(`server started http://localhost:${port}`)
+});

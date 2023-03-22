@@ -11,7 +11,7 @@ app.use(koaBody({json: true}));
 
 const notes = [];
 let nextId = 1;
-console.log(notes)
+
 const router = new Router();
 
 router.get('/notes', async (ctx, next) => {

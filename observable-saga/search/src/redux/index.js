@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-// import galleryReducer from "./gallery";
+import searchReducer from "./search";
 
 export default configureStore({
   reducer: {
+    search: searchReducer,
   },
 })
