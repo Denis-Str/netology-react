@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { fetchDetailedService, detailed, loading } from "../../redux/service";
+import { fetchDetailedService, detailed, loading } from "../../redux/detailedService";
 import { useParams } from 'react-router-dom';
 import {useEffect} from "react";
 

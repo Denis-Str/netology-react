@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { fetchServices, list, loading } from "../../redux/service";
+import { fetchServices, list, loading } from "../../redux/services";
 import {useEffect} from "react";
 import {NavLink} from "react-router-dom";
 
@@ -16,10 +16,9 @@ export default function Index() {
     <ul>
       {services.map(({id, name, price}) =>
         <li key={id}>
-          <NavLink to={`/${id}/details`}>
-            {name} {price}
-          </NavLink>
-        </li>)}
+          <NavLink to={`/${id}/details`}>{name} {price}</NavLink>
+        </li>)
+      }
     </ul>
   )
 }

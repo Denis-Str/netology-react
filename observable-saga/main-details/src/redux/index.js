@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import serviceReducer from "./service";
+import serviceReducer from "./services";
+import detailedService from "./detailedService";
 
 export default configureStore({
   reducer: {
-    service: serviceReducer
+    services: serviceReducer,
+    detailedService: detailedService
   },
 })
