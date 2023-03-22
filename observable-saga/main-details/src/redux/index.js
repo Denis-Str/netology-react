@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-// import galleryReducer from "./gallery";
+import serviceReducer from "./service";
 
 export default configureStore({
   reducer: {
+    service: serviceReducer
   },
 })
