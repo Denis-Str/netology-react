@@ -1,11 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
+import {setError} from "./error";
 
 export const fetchDetailedService = (id) => async (dispatch) => {
   try {
     dispatch(setLoadingStatus(true));
     const { data } = await axios.get(`http://localhost:7070/api/services/${id}`);
-    dispatch(setError(''));
+    dispatch(setError(null));
     dispatch(setDetailedService(data));
   } catch (e) {
     dispatch(setError(e.message));
@@ -21,7 +22,6 @@ export const detailedService = createSlice({
       id: null
     },
     loading: false,
-    error: '',
   },
   reducers: {
     setDetailedService: (state, action) => {
@@ -30,15 +30,11 @@ export const detailedService = createSlice({
     setLoadingStatus: (state, action) => {
       state.isLoading = action.payload;
     },
-    setError: (state, action) => {
-      state.error = action.payload;
-    }
   }
 })
 
-export const { setLoadingStatus, setDetailedService, setError } = detailedService.actions;
+export const { setLoadingStatus, setDetailedService } = detailedService.actions;
 export const detailed = ({detailedService}) => detailedService.detailedService;
 export const loading = ({detailedService}) => detailedService.loading;
-export const error = ({detailedService}) => detailedService.error;
 
 export default detailedService.reducer;

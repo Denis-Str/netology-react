@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {setError} from "./error";
 import axios from "axios";
 
 export const fetchServices = () => async (dispatch) => {
   try {
     dispatch(setLoadingStatus(true));
     const { data } = await axios.get('http://localhost:7070/api/services');
-    dispatch(setError(''));
+    dispatch(setError(null));
     dispatch(setList(data));
   } catch (e) {
     dispatch(setError(e.message));
@@ -28,14 +29,10 @@ export const services = createSlice({
     setLoadingStatus: (state, action) => {
       state.isLoading = action.payload;
     },
-    setError: (state, action) => {
-      state.error = action.payload;
-    }
   }
 })
-export const { setList, setLoadingStatus, setError } = services.actions;
+export const { setList, setLoadingStatus } = services.actions;
 export const list = ({services}) => services.list;
 export const loading = ({services}) => services.loading;
-export const error = ({services}) => services.error;
 
 export default services.reducer;
