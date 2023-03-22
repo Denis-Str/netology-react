@@ -1,5 +1,5 @@
-import { useSelector, useDispatch } from "react-redux";
-import { fetchResult, result, isLoading, error } from "./redux/search";
+import {useSelector, useDispatch} from "react-redux";
+import {fetchResult, result, isLoading, error} from "./redux/search";
 import debounce from "./helpers/debounce";
 
 export default function App() {
@@ -10,20 +10,18 @@ export default function App() {
 
   const handlerChange = debounce(value => {
     dispatch(fetchResult(value));
-  }, 300)
+  }, 500)
 
   const listElem = <ul>{resultList.map(({id, name}) => <li key={id}>{name}</li>)}</ul>;
   const loadingElem = <div className="loading">{loading && "loading..."}</div>;
   const errorElem = errorMessage && <h5>{errorMessage}</h5>;
 
-  let searchResultElem;
-  if (resultList.length) searchResultElem = listElem
-  else searchResultElem =<ul><li>not results</li></ul>
+  let searchResultElem = resultList.length ? listElem : <ul><li>not results</li></ul>;
 
   return (
     <>
-      <input onChange={(event) => handlerChange(event.target.value)} />
-      {errorMessage ? errorElem : loading ? loadingElem : searchResultElem}
+      <input onChange={(event) => handlerChange(event.target.value)}/>
+      {loading ?  loadingElem  : errorMessage ? errorElem : searchResultElem}
     </>
   )
 }

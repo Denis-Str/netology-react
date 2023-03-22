@@ -24,7 +24,6 @@ let isEven = true;
 
 router.get("/api/search", async (ctx) => {
   if (Math.random() > 0.75) return ctx.response.status = 500;
- // return ctx.response.status = 500;
 
   const { q } = ctx.request.query;
 
