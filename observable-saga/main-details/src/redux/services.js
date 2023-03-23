@@ -5,8 +5,8 @@ import axios from "axios";
 export const fetchServices = () => async (dispatch) => {
   try {
     dispatch(setLoadingStatus(true));
-    const { data } = await axios.get('http://localhost:7070/api/services');
     dispatch(setError(null));
+    const { data } = await axios.get('http://localhost:7070/api/services');
     dispatch(setList(data));
   } catch (e) {
     dispatch(setError(e.message));
@@ -26,7 +26,7 @@ export const services = createSlice({
       state.list = action.payload;
     },
     setLoadingStatus: (state, action) => {
-      state.isLoading = action.payload;
+      state.loading = action.payload;
     },
   }
 })

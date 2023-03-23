@@ -5,8 +5,8 @@ import {setError} from "./error";
 export const fetchDetailedService = (id) => async (dispatch) => {
   try {
     dispatch(setLoadingStatus(true));
-    const { data } = await axios.get(`http://localhost:7070/api/services/${id}`);
     dispatch(setError(null));
+    const { data } = await axios.get(`http://localhost:7070/api/services/${id}`);
     dispatch(setDetailedService(data));
   } catch (e) {
     dispatch(setError(e.message));
@@ -28,7 +28,7 @@ export const detailedService = createSlice({
       state.detailedService = action.payload;
     },
     setLoadingStatus: (state, action) => {
-      state.isLoading = action.payload;
+      state.loading = action.payload;
     },
   }
 })
