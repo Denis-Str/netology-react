@@ -17,11 +17,42 @@ body {
 }
 
 ul {
-  margin: 0;
+  margin: 0 0 0 16px;
   padding: 0;
 }
 
 a {
   color: black;
   text-decoration: unset;
+}
+
+.error-view-comp {
+  border-radius: 6px;
+  padding: 16px;
+  background-color: #F4CDD1;
+  color: #76385D;
+}
+
+.error-view-comp span {
+  margin-right: 16px;
+}
+
+.loader {
+  width: 28px;
+  height: 28px;
+  border: 2px solid #FFF;
+  border-bottom-color: #FF3D00;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

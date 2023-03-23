@@ -6,7 +6,7 @@ export const fetchDetailedService = (id) => async (dispatch) => {
   try {
     dispatch(setLoadingStatus(true));
     dispatch(setError(null));
-    const { data } = await axios.get(`http://localhost:7070/api/services/${id}`);
+    const {data} = await axios.get(`http://localhost:7070/api/services/${id}`);
     dispatch(setDetailedService(data));
   } catch (e) {
     dispatch(setError(e.message));
@@ -33,7 +33,7 @@ export const detailedService = createSlice({
   }
 })
 
-export const { setLoadingStatus, setDetailedService } = detailedService.actions;
+export const {setLoadingStatus, setDetailedService} = detailedService.actions;
 export const detailed = ({detailedService}) => detailedService.detailedService;
 export const loading = ({detailedService}) => detailedService.loading;
 

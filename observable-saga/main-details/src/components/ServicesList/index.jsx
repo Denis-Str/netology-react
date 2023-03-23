@@ -1,8 +1,8 @@
-import { useSelector, useDispatch } from "react-redux";
-import { fetchServices, list, loading } from "../../redux/services";
-import { errorMessage } from "../../redux/error";
+import {useSelector, useDispatch} from "react-redux";
+import {fetchServices, list, loading} from "../../redux/services";
+import {errorMessage} from "../../redux/error";
 import {memo, useEffect} from "react";
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import Loader from "../Loader";
 import ErrorView from "../ ErrorView";
 
@@ -17,7 +17,7 @@ export default memo(
       dispatch(fetchServices())
     }, [])
 
-    if (errMessage) return <ErrorView request={fetchServices()} />
+    if (errMessage) return <ErrorView request={fetchServices()}/>
     if (isLoading) return <Loader/>
     else return (
       <ul>

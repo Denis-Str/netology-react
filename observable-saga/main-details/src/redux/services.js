@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 import {setError} from "./error";
 import axios from "axios";
 
@@ -6,7 +6,7 @@ export const fetchServices = () => async (dispatch) => {
   try {
     dispatch(setLoadingStatus(true));
     dispatch(setError(null));
-    const { data } = await axios.get('http://localhost:7070/api/services');
+    const {data} = await axios.get('http://localhost:7070/api/services');
     dispatch(setList(data));
   } catch (e) {
     dispatch(setError(e.message));
@@ -30,7 +30,7 @@ export const services = createSlice({
     },
   }
 })
-export const { setList, setLoadingStatus } = services.actions;
+export const {setList, setLoadingStatus} = services.actions;
 export const list = ({services}) => services.list;
 export const loading = ({services}) => services.loading;
 

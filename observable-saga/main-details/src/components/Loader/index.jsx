@@ -1,5 +1,7 @@
 export default function Loader() {
   return (
-    <div>Loading...</div>
+    <div className="loader-comp">
+      <span className="loader"/>
+    </div>
   )
 }

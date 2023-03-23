@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import {configureStore} from '@reduxjs/toolkit';
 import serviceReducer from "./services";
 import detailedReducer from "./detailedService";
 import errorReducer from "./error";
