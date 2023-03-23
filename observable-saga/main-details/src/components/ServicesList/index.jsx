@@ -11,7 +11,6 @@ export default function Index() {
   const services = useSelector(list) || [];
   const isLoading = useSelector(loading);
   const errMessage = useSelector(errorMessage);
-  console.log(services.length === 0)
 
   useEffect(() => {
     dispatch(fetchServices())
