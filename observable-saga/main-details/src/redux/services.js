@@ -20,7 +20,6 @@ export const services = createSlice({
   initialState: {
     list: [],
     loading: false,
-    error: '',
   },
   reducers: {
     setList: (state, action) => {

@@ -4,18 +4,20 @@ import { errorMessage } from "../../redux/error";
 import {useEffect} from "react";
 import {NavLink} from "react-router-dom";
 import Loader from "../Loader";
+import ErrorView from "../ ErrorView";
 
 export default function Index() {
   const dispatch = useDispatch();
   const services = useSelector(list) || [];
   const isLoading = useSelector(loading);
   const errMessage = useSelector(errorMessage);
+  console.log(services.length === 0)
 
   useEffect(() => {
     dispatch(fetchServices())
   }, [services.length === 0])
 
-  if (errMessage) return <div>{errMessage}</div>
+  if (errMessage) return <ErrorView request={fetchServices()} />
   if (isLoading) return <Loader/>
   else return (
     <ul>

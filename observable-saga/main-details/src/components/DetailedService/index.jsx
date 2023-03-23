@@ -4,6 +4,7 @@ import { errorMessage } from "../../redux/error";
 import { useParams } from 'react-router-dom';
 import {useEffect} from "react";
 import Loader from "../Loader";
+import ErrorView from "../ ErrorView";
 
 export default function DetailedService() {
   const dispatch = useDispatch();
@@ -15,9 +16,9 @@ export default function DetailedService() {
 
   useEffect(() => {
     dispatch(fetchDetailedService(id))
-  }, [id === null]);
+  }, [id]);
 
-  if (errMessage) return <div>{errMessage}</div>
+  if (errMessage) return <ErrorView request={fetchDetailedService(id)} />
   if (isLoading) return <Loader/>
   else return (
     <div>
